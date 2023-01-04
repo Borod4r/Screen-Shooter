@@ -30,7 +30,23 @@ namespace Borodar.ScreenShooter
         // Messages
         //---------------------------------------------------------------------
 
+#if UNITY_2019_1_OR_NEWER        
+
+        [SettingsProvider]
+        public static SettingsProvider EditorPreferences()
+        {
+            var provider = new SettingsProvider("Preferences/" + AssetInfo.NAME, SettingsScope.User)
+            {
+                guiHandler = (searchContext) =>
+                {
+                    EditorPreferencesGUI();
+                }
+            };
+            return provider;
+        }
+#else
         [PreferenceItem(AssetInfo.NAME)]
+#endif
         public static void EditorPreferences()
         {
             EditorGUILayout.HelpBox(HOME_FOLDER_HINT, MessageType.Info);
