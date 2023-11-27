@@ -47,7 +47,7 @@ namespace Borodar.ScreenShooter
 #else
         [PreferenceItem(AssetInfo.NAME)]
 #endif
-        public static void EditorPreferences()
+        public static void EditorPreferencesGUI()
         {
             EditorGUILayout.HelpBox(HOME_FOLDER_HINT, MessageType.Info);
             EditorGUILayout.Separator();
